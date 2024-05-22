@@ -1,0 +1,55 @@
+#DataBase Schemas:
+
+-Admins Table:
+
+AdminID (Primary Key)
+CollegeID (Foreign Key referencing Colleges.CollegeID)
+Username
+Password (hashed and salted for security)
+FirstName
+LastName
+Email
+
+-Professors Table:
+
+ProfessorID (Primary Key)
+AdminID (Foreign Key referencing Admins.AdminID)
+CollegeID (Foreign Key referencing Colleges.CollegeID)
+Username
+Password (hashed and salted for security)
+FirstName
+LastName
+Email
+
+-Colleges Table:
+
+CollegeID (Primary Key)
+CollegeName
+CollegePhone
+CollegeEmail
+
+-AllocationRequests Table:
+
+RequestID (Primary Key)
+ProfessorID (Foreign Key referencing Professors.ProfessorID)
+AdminID (Foreign Key referencing Admins.AdminID)
+BlockDetails
+Status (Pending/Approved/Rejected)
+RequestDate
+
+-CSVFiles Table:
+
+FileID (Primary Key)
+AdminID (Foreign Key referencing Admins.AdminID)
+FileName
+FilePath
+UploadDate
+
+
+-Students Table:
+
+StudentID (Primary Key)
+CollegeID (Foreign Key referencing Colleges.CollegeID)
+FirstName
+LastName
+Email

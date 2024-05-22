@@ -1,0 +1,65 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{%block title %} Register {% endblock %}
+{%block content%}
+
+<div class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <form action="{% url 'register' %}" method="POST">
+                <h2>Register</h2>
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                <div class="form-group">
+                    <label for="{{form.username.id_for_label}}">Username:</label>
+                    <input type="text" name="{{form.username.name}}" class="form-control"
+                        value="{{form.username.value}}">
+                    <span class="text-danger">{{form.username.errors}}</span>
+                </div>
+                <div class="form-group">
+                    <label for="{{form.first_name.id_for_label}}">Name:</label>
+                    <input type="text" name="{{form.first_name.name}}" class="form-control"
+                        value="{{form.first_name.value}}">
+                    <span class="text-danger">{{form.first_name.errors}}</span>
+                </div>
+                <div class="form-group">
+                    <label for="{{form.email.id_for_label}}">email@:</label>
+                    <input type="text" name="{{form.email.name}}" class="form-control" value="{{form.email.value}}">
+                    <span class="text-danger">{{form.email.errors}}</span>
+                </div>
+                <div class="form-group">
+                    <label for="{{form.college_name.id_for_label}}">College_name:</label>
+                    <select name="{{ form.college_name.name }}" class="form-control">
+                        <option value="" selected disabled>Select College</option>
+                        <option value="SCET">SCET</option>
+                        <option value="DDU">DDU</option>
+                        <option value="XYZ">XYZ</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <span class="text-danger">{{form.college_name.errors}}</span>
+                </div>
+                <div class="form-group">
+                    <label for="{{form.password1.id_for_label}}">Password:</label>
+                    <input type="password" name="{{form.password1.name}}" class="form-control"
+                        value="{{form.password1.value}}">
+                    <span class="text-danger">{{form.password1.errors}}</span>
+                </div>
+                <div class="form-group">
+                    <label for="{{form.password2.id_for_label}}">Confrim Password:</label>
+                    <input type="password" name="{{form.password2.name}}" class="form-control"
+                        value="{{form.password2.value}}">
+                    <span class="text-danger">{{form.password2.errors}}</span>
+                </div>
+                <input type="submit" class="btn btn-dark" value="Register">
+            </form>
+            <div class="signup-image">
+                <figure>
+                    <img src="{%static 'imgs/signup.jpg' %}" alt="sign up image" />
+                </figure>
+                <a href="{% url 'login'%}">I'm already a member.</a><br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
