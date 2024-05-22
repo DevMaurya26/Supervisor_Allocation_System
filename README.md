@@ -1,5 +1,4 @@
 # Supervisor_Allocation_System
-this repo  is just showing the pictures of the website because i can't make code public due to some reasons.
 
 # Home page
 ![127 0 0 1_8000_](https://github.com/DevvMaurya/Supervisor_Allocation_System/assets/105772302/7e3842b7-6bef-4652-a139-b3668b3142b5)
