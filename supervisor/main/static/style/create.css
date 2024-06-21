@@ -2,3 +2,23 @@
     display: flex;
     justify-content: space-around;
 }
+
+.disabled_rule
+{
+    background: gray;
+    color: black;
+    cursor:not-allowed;
+    width:200px; margin:0"
+}
+.change-btn{
+    background-color: aqua;
+    background-color: #3498db; width:200px; margin:0"
+}
+.change-btn:hover {
+    background-color: #08a000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer; 
+}

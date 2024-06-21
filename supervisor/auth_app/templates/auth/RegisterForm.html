@@ -10,7 +10,7 @@
             <form action="{% url 'register' %}" method="POST">
                 <h2>Register</h2>
                 {% csrf_token %}
-                <!-- {{form.as_p}} -->
+                <!-- {{form.last_name}} -->
                 <div class="form-group">
                     <label for="{{form.username.id_for_label}}">Username:</label>
                     <input type="text" name="{{form.username.name}}" class="form-control"
@@ -29,15 +29,19 @@
                     <span class="text-danger">{{form.email.errors}}</span>
                 </div>
                 <div class="form-group">
-                    <label for="{{form.college_name.id_for_label}}">College_name:</label>
-                    <select name="{{ form.college_name.name }}" class="form-control">
+                    <!-- <label for="{{form.last_name.id_for_label}}">College_name:</label>
+                    <select name="{{ form.last_name.name }}" class="form-control">
                         <option value="" selected disabled>Select College</option>
                         <option value="SCET">SCET</option>
                         <option value="DDU">DDU</option>
                         <option value="XYZ">XYZ</option>
-                        <!-- Add more options as needed -->
-                    </select>
-                    <span class="text-danger">{{form.college_name.errors}}</span>
+                        Add more options as needed
+                    </select> -->
+                    <div name="" class="form-control" id="">
+                    <label for="{{ form.last_name.label_tag }}">{{ form.last_name.label_tag }}</label>
+                        {{ form.last_name }}
+                    </div>
+                    <span class="text-danger">{{form.last_name.errors}}</span>
                 </div>
                 <div class="form-group">
                     <label for="{{form.password1.id_for_label}}">Password:</label>
