@@ -194,3 +194,7 @@ i {
 
 
 /* -------------------- */
+.user_name_log{
+	display: flex;
+	align-items: center	;
+}

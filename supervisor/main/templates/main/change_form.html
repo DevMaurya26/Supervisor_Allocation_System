@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{%block title %} Your Request {% endblock %}
+{%block content%}
+<table class="table table-striped-columns border-primary">
+    <tr>
+        <th>No.</th>
+        <th>ID </th>
+        <th>Req_name </th>
+        <th>Details </th>
+        <th>Date of Request</th>
+        <th>Status </th>
+        {% if user.is_staff %}
+        <th title="file that you need to change if you approve.!">File Name</th>
+        <th>Decision | YES</th>
+        <th>Decision | NO</th>
+        {% endif %}
+    </tr>
+    {% for i in data %}
+    <tr>
+        {% with idx=forloop.counter %}
+        <td>{{idx}}</td>
+        <td>{{i.id}}</td>
+        <td>{{i.reqtor_name}}</td>
+        <td>{{i.previous_details}}</td>
+        <td>{{i.req_date}}</td>
+        {% if not i.status %}
+        <td>Pending...</td>
+        {% elif i.status == 2 %}
+        <td style="background-color:Red; color:azure" >Rejected...</td>
+        {% else %}
+        <td style="background-color:Green ;color:azure">Approved...</td>
+        {% endif %}
+        {% if user.is_staff %}
+        <td><a href="{% url 'file_res' file_name=i.file_name %}">{{ i.file_name }}</a></td>
+        <td><a href="{% url 'admin_decision' decision=1 req_id=i.id %}"><button>Approve</button></a></td>
+        <td><a href="{% url 'admin_decision' decision=2 req_id=i.id %}"><button>Reject</button></a></td>
+        {% endif %}
+        {% endwith %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

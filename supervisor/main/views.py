@@ -1,10 +1,10 @@
 from django.shortcuts import render , redirect
-from django.http import FileResponse
+from django.http import FileResponse,HttpResponse, HttpResponseRedirect
 from Logics.fileReader import saveAtServer
 from Logics.allocation import allocations
 from django.contrib.auth.decorators import login_required
 from .middelware import is_admin
-from .models import Allocation_File
+from .models import Allocation_File, Change_reqs
 from django.contrib.auth.models import User
 
 save = saveAtServer()
@@ -70,15 +70,23 @@ def generated(request):
     if request.user.is_staff:
         return redirect('create')
 
-    UserName = request.user.first_name
+    user_instance = User.objects.get(pk=request.user.id)
+    UserName = request.user.first_name or user_instance.first_name
+    institute_name = user_instance.last_name
 
-    with open('./CSVfiles/generated_files/0files.txt', 'r') as f:
-        name = f.read().split('\n')
-        if not name:
-            return
-        print(name)
-    data = allocations.find_allocation_for(UserName,name[-2])
-    return render(request, 'main/table_data.html',{'data':data})
+    admin_id_institute = User.objects.get(last_name=institute_name,is_staff=1)
+    print(admin_id_institute)
+    latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
+    print(latest_file_name)
+    # with open('./CSVfiles/generated_files/0files.txt', 'r') as f:
+    #     name = f.read().split('\n')
+    #     if not name:
+    #         return
+    #     print(name)
+    data = allocations.find_allocation_for(UserName,latest_file_name.last())
+    global final_file_name
+    final_file_name = latest_file_name.last()
+    return render(request, 'main/table_data.html',{'data':data,'file_name':latest_file_name})
 
 
 
@@ -89,3 +97,41 @@ def download(request, file_name):
     response['Content-Disposition'] = f'attachment; filename="Block_Allocation: {file_name[:10]}.csv"'
 
     return response
+
+@login_required(login_url='login')
+def change_req(request,data):
+    data = data.split(' ')
+    
+    user_instance = User.objects.get(pk=request.user.id) 
+    #user instance need inorder to use as foregion key
+    date = data[0][1:]
+    time = data[1]+data[2]
+    Name = data[3]
+    Block_Number = data[-1].split(']')[0]
+    final_file_name
+    
+    details = str(date)+' '+str(time)+' - block no.: '+str(Block_Number)
+    Obj_Change_req_db = Change_reqs(requestor_id=user_instance,reqtor_name=request.user.first_name,file_name=str(final_file_name),previous_details=details,college=request.user.last_name)
+
+    Obj_Change_req_db.save()
+    # return render(request,'main/change_form.html',{'data':data})
+    return HttpResponse(status=204)
+
+@login_required(login_url='login')
+def user_change_req(request):
+    user_instance = User.objects.get(pk=request.user.id) 
+    if not request.user.is_staff:
+        data = Change_reqs.objects.filter(requestor_id=request.user.id)
+        return render(request, 'main/change_form.html',{'data':data})
+
+    #if admin login then show all of the data where institute name is same..!
+    print(user_instance.last_name)
+    data = Change_reqs.objects.filter(college=user_instance.last_name)
+    print(data)
+    return render(request, 'main/change_form.html',{'data':data})
+    
+@is_admin    
+def admin_aprove_reject(request,decision,req_id):
+    print(decision,req_id)
+    Change_reqs.objects.filter(id=req_id).update(status=decision)
+    return redirect('your_change_req') #to render same page 
