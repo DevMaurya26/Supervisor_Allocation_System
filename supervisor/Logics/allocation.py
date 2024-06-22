@@ -54,14 +54,17 @@ class allocations:
         # except Exception as e:
         #     print("Error in allocation.py"+str(e))
     
-    def find_allocation_for(name,file_name):
-        path = "./CSVfiles/generated_files/"+file_name
+    def find_allocation_for(first_name,file_name):
+        if not file_name:
+            return True
+        path = "./CSVfiles/generated_files/"+str(file_name)
         data = pd.read_csv(f'{path}')
         time.sleep(2)
-        data = data[data['Name'] == name]
-
+        data = data[data['Name'] == first_name]
         data = np.array(data)
         print(data)
+        if not np.any(data):
+             return True
         return data
          
 

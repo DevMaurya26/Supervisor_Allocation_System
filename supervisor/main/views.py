@@ -70,17 +70,23 @@ def generated(request):
     if request.user.is_staff:
         return redirect('create')
 
-    UserName = request.user.first_name
+    user_instance = User.objects.get(pk=request.user.id)
+    UserName = request.user.first_name or user_instance.first_name
+    institute_name = user_instance.last_name
 
-    with open('./CSVfiles/generated_files/0files.txt', 'r') as f:
-        name = f.read().split('\n')
-        if not name:
-            return
-        print(name)
-    data = allocations.find_allocation_for(UserName,name[-2])
+    admin_id_institute = User.objects.get(last_name=institute_name,is_staff=1)
+    print(admin_id_institute)
+    latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
+    print(latest_file_name)
+    # with open('./CSVfiles/generated_files/0files.txt', 'r') as f:
+    #     name = f.read().split('\n')
+    #     if not name:
+    #         return
+    #     print(name)
+    data = allocations.find_allocation_for(UserName,latest_file_name.last())
     global final_file_name
-    final_file_name = name[-2]
-    return render(request, 'main/table_data.html',{'data':data,'file_name':name[-2]})
+    final_file_name = latest_file_name.last()
+    return render(request, 'main/table_data.html',{'data':data,'file_name':latest_file_name})
 
 
 

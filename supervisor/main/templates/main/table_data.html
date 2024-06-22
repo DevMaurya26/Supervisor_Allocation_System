@@ -16,7 +16,11 @@
 </style>
 {% block content %}
 <h1>Allocated Blocks</h1>
-<table class="table table-striped-columns border-primary">
+{% if data %}
+    
+    <h1 style="position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);" class="container">No Allocation Found For You.!😁</h1>
+{% else %}
+<table class="table table-striped-columns border-primary table">
     <tr>
         <th>No.</th>
         <th>Name </th>
@@ -33,9 +37,10 @@
         <td>{{i.0}}</td>
         <td>{{i.1}}</td>
         <td>{{i.3}}</td>
-        <td><a href="{% url 'change_req' data=i %}" ><button type="submit" title="wait for admin." class="change-btn" id="{{idx}}{{i.2}}" onclick="change(this)">Change</button></a></td>
+        <td><a href="{% url 'change_req' data=i %}" ><button type="submit" title="wait for admin." class="change-btn" id="{{idx}}{{i.2}}{{user.id}}" onclick="change(this)">Change</button></a></td>
         {% endwith %}
     </tr>
     {% endfor %}
 </table>
+{% endif %}
 {% endblock %}
