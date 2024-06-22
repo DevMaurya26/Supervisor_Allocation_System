@@ -7,15 +7,6 @@ body {
     background-repeat:no-repeat ;
     background-position: center; */
 }
- /* body{
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
- } */
 body::-webkit-scrollbar{
     width: 10px;    
 }

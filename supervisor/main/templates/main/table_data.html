@@ -1,23 +1,12 @@
 {% extends 'main/base.html'%}
 {% load static %}
 {% block title %} allocated Blocks {% endblock %}
-
-<!-- <script>
-    const ob = document.querySelector('#change_btn')
-    ob.addEventListener('click',()=>{
-        alert("Are your Sure .. ? \n You want to Change .. ? \n 🔴Then you can't undo ..!");
-        console.log()
-    })
-
-</script> -->
-
 <style>
 
 </style>
 {% block content %}
 <h1>Allocated Blocks</h1>
 {% if data %}
-    
     <h1 style="position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);" class="container">No Allocation Found For You.!😁</h1>
 {% else %}
 <table class="table table-striped-columns border-primary table">
