@@ -17,3 +17,10 @@
 
 # user access
 ![image](https://github.com/DevvMaurya/Supervisor_Allocation_System/assets/105772302/8b5c1d91-8b0e-4f0b-83e7-199ec28486c4)
+
+# Change Request by User
+![image](https://github.com/DevvMaurya/Supervisor_Allocation_System/assets/105772302/46ac58d5-28e3-48ca-a731-0d4955b565b6)
+
+# Request approval Rejection by admmin
+- list of request from same institute.. base to admin
+![image](https://github.com/DevvMaurya/Supervisor_Allocation_System/assets/105772302/6ae00d82-1e8e-43d6-93b7-ba96a960df3d)
