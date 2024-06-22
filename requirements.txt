@@ -152,7 +152,6 @@ pytweening==1.2.0
 pytz==2023.3
 pyusb==1.2.1
 PyWavelets==1.4.1
-pywin32==305
 PyYAML==6.0.1
 pyzmq==25.1.2
 rawutil==2.7.4
