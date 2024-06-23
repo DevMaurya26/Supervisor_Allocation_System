@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ald*(*3yzy_fg1&&nk!h0b9-qw=+++9p9lfx2g-0ux^18yb1h&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://supervisor-allocation-system.onrender.com']
+ALLOWED_HOSTS = ['https://supervisor-allocation-system.onrender.com','*'] 
 
 
 # Application definition
@@ -60,7 +60,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
-'https://supervisor-allocation-system.onrender.com',
+'https://supervisor-allocation-system.onrender.com','*'
 
 ]
 
