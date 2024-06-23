@@ -60,6 +60,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
+'https://supervisor-allocation-system.onrender.com',
+
 ]
 
 CORS_ORIGINS_ALLOW_ALL = True
