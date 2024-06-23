@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: supervisor
+    env: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn supervisor.wsgi
+    runtime: python3.10.14
+    timeoutSeconds: 900  # Increase the timeout to 15 minutes
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: my_django_app.settings.production
+      - key: SECRET_KEY
+        sync: false
