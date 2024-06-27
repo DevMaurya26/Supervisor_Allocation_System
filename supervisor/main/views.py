@@ -85,15 +85,18 @@ def generated(request):
         latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
         print(latest_file_name)
 
+        try:
+            data = allocations.find_allocation_for(UserName,latest_file_name.last())
+            global final_file_name
+            final_file_name = latest_file_name.last()
+        except Exception as e:
+            print('Unable to find Data..', e)
         
-    except:
+    except Exception as e:
         not_registered_clg = True
-        print('College is not registered..!')
+        print('College is not registered..!',e)
 
     finally:
-        data = allocations.find_allocation_for(UserName,latest_file_name.last())
-        global final_file_name
-        final_file_name = latest_file_name.last()
         return render(request, 'main/table_data.html',{'data':data,'file_name':latest_file_name,'college_404':not_registered_clg})
 
 
