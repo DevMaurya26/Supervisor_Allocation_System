@@ -69,6 +69,7 @@ def create(request):
 def generated(request):
     data= []
     latest_file_name=''
+    not_registered_clg=False
     if request.user.is_staff:
         return redirect('create')
 
