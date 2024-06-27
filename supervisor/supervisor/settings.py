@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ald*(*3yzy_fg1&&nk!h0b9-qw=+++9p9lfx2g-0ux^18yb1h&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['supervisor-allocation-system.onrender.com','*'] 
 
@@ -88,23 +88,23 @@ WSGI_APPLICATION = 'supervisor.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "supervisor",
-        "USER": "root",
-        "PASSWORD": "3fXGkV4bCTwijsVgo81ZfeJVyc0yG0I0",
-        "HOST": "dpg-cprahv5umphs73c1vong-a.oregon-postgres.render.com",
-        "PORT": "5432",
-    }
-
-    #     'default': {
-    #     "ENGINE": "django.db.backends.mysql",
+    # 'default': {
+    #     "ENGINE": "django.db.backends.postgresql",
     #     "NAME": "supervisor",
     #     "USER": "root",
-    #     "PASSWORD": "MySql@123",
-    #     "HOST": "127.0.0.1",
-    #     "PORT": "3306",
+    #     "PASSWORD": "3fXGkV4bCTwijsVgo81ZfeJVyc0yG0I0",
+    #     "HOST": "dpg-cprahv5umphs73c1vong-a.oregon-postgres.render.com",
+    #     "PORT": "5432",
     # }
+
+        'default': {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "supervisor",
+        "USER": "root",
+        "PASSWORD": "MySql@123",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+    }
 }
 
 

@@ -5,31 +5,36 @@
 
 </style>
 {% block content %}
-<h1>Allocated Blocks</h1>
-{% if data %}
-    <h1 style="position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);" class="container">No Allocation Found For You.!😁</h1>
-{% else %}
-<table class="table table-striped-columns border-primary table">
-    <tr>
-        <th>No.</th>
-        <th>Name </th>
-        <th>Date </th>
-        <th>Time </th>
-        <th>Allocated Block </th>
-        <th>Request to Change </th>
-    </tr>
-    {% for i in data %}
-    <tr>
-        {% with idx=forloop.counter %}
-        <td>{{idx}}</td>
-        <td>{{i.2}}</td>
-        <td>{{i.0}}</td>
-        <td>{{i.1}}</td>
-        <td>{{i.3}}</td>
-        <td><a href="{% url 'change_req' data=i %}" ><button type="submit" title="wait for admin." class="change-btn" id="{{idx}}{{i.2}}{{user.id}}" onclick="change(this)">Change</button></a></td>
-        {% endwith %}
-    </tr>
-    {% endfor %}
-</table>
+{%if not college_404%}
+    <h1>Allocated Blocks</h1>
+    {% if data %}
+        <h1 style="position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);" class="container">No Allocation Found For You.!😁</h1>
+    {% else %}
+        <table class="table table-striped-columns border-primary table">
+            <tr>
+                <th>No.</th>
+                <th>Name </th>
+                <th>Date </th>
+                <th>Time </th>
+                <th>Allocated Block </th>
+                <th>Request to Change </th>
+            </tr>
+        {% for i in data %}
+        <tr>
+            {% with idx=forloop.counter %}
+            <td>{{idx}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.0}}</td>
+            <td>{{i.1}}</td>
+            <td>{{i.3}}</td>
+            <td><a href="{% url 'change_req' data=i %}" ><button type="submit" title="wait for admin." class="change-btn" id="{{idx}}{{i.2}}{{user.id}}" onclick="change(this)">Change</button></a></td>
+            {% endwith %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {%else%}
+    <h1> Your College is not Registerd with us..! <br>
+    Contact Us In Order to connect >> <a href="/">Click here..</a></h1>
 {% endif %}
 {% endblock %}

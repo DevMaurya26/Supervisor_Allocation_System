@@ -67,6 +67,8 @@ def create(request):
 
 @login_required(login_url='login')
 def generated(request):
+    data= []
+    latest_file_name=''
     if request.user.is_staff:
         return redirect('create')
 
@@ -74,19 +76,29 @@ def generated(request):
     UserName = request.user.first_name or user_instance.first_name
     institute_name = user_instance.last_name
 
-    admin_id_institute = User.objects.get(last_name=institute_name,is_staff=1)
-    print(admin_id_institute)
-    latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
-    print(latest_file_name)
+    try:
+
+        admin_id_institute = User.objects.get(last_name=institute_name,is_staff=1)
+
+    except:
+        not_registered_clg = True
+        print('College is not registered..!')
+
+        print(admin_id_institute)
+        latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
+
+
+        print(latest_file_name)
     # with open('./CSVfiles/generated_files/0files.txt', 'r') as f:
     #     name = f.read().split('\n')
     #     if not name:
     #         return
     #     print(name)
-    data = allocations.find_allocation_for(UserName,latest_file_name.last())
-    global final_file_name
-    final_file_name = latest_file_name.last()
-    return render(request, 'main/table_data.html',{'data':data,'file_name':latest_file_name})
+        data = allocations.find_allocation_for(UserName,latest_file_name.last())
+        global final_file_name
+        final_file_name = latest_file_name.last()
+    finally:
+        return render(request, 'main/table_data.html',{'data':data,'file_name':latest_file_name,'college_404':not_registered_clg})
 
 
 
