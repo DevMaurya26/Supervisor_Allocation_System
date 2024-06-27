@@ -67,7 +67,7 @@ def create(request):
 
 @login_required(login_url='login')
 def generated(request):
-    data= True
+    data =[]
     latest_file_name=''
     not_registered_clg=False
     if request.user.is_staff:
