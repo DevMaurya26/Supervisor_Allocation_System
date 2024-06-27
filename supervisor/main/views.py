@@ -67,7 +67,7 @@ def create(request):
 
 @login_required(login_url='login')
 def generated(request):
-    data= []
+    data= True
     latest_file_name=''
     not_registered_clg=False
     if request.user.is_staff:
@@ -80,24 +80,18 @@ def generated(request):
     try:
 
         admin_id_institute = User.objects.get(last_name=institute_name,is_staff=1)
+        print(admin_id_institute)
 
+        latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
+        print(latest_file_name)
+        
+        data = allocations.find_allocation_for(UserName,latest_file_name.last())
+        global final_file_name
+        final_file_name = latest_file_name.last()
     except:
         not_registered_clg = True
         print('College is not registered..!')
 
-        print(admin_id_institute)
-        latest_file_name = Allocation_File.objects.filter(user_id=admin_id_institute.id)
-
-
-        print(latest_file_name)
-    # with open('./CSVfiles/generated_files/0files.txt', 'r') as f:
-    #     name = f.read().split('\n')
-    #     if not name:
-    #         return
-    #     print(name)
-        data = allocations.find_allocation_for(UserName,latest_file_name.last())
-        global final_file_name
-        final_file_name = latest_file_name.last()
     finally:
         return render(request, 'main/table_data.html',{'data':data,'file_name':latest_file_name,'college_404':not_registered_clg})
 
