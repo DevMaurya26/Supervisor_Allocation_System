@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ald*(*3yzy_fg1&&nk!h0b9-qw=+++9p9lfx2g-0ux^18yb1h&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://supervisor-allocation-system.onrender.com','*'] 
+ALLOWED_HOSTS = ['supervisor-allocation-system.onrender.com','*'] 
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'main.apps.MainConfig',
     'auth_app.apps.AuthAppConfig',
     'corsheaders',
@@ -49,21 +50,17 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",
-'https://supervisor-allocation-system.onrender.com','*'
-
-]
-
+CORS_ALLOWED_ORIGINS = []
 CORS_ORIGINS_ALLOW_ALL = True
 
 ROOT_URLCONF = 'supervisor.urls'
@@ -146,8 +143,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
