@@ -63,8 +63,8 @@ class allocations:
         data = data[data['Name'] == first_name]
         data = np.array(data)
         print(data)
-        if not np.any(data):
-             return True
+        # if not np.any(data):
+        #      return True
         return data
          
 
