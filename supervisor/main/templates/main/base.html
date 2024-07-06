@@ -105,6 +105,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-plus"></i>Create/ADD Staff</a>
         </li>
+        {% endif %}
         <li class="nav-item active ">
           <a class="nav-link" href="{% url 'create' %}"><i class="far fa-address-book"></i>Dashboard</a>
 
@@ -114,7 +115,6 @@
           <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Login</a>
         </li>
 
-        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/user-attachments/files/16116561/User.Manual.docx"><i class="far fa-copy"></i>Documents</a>
         </li>
