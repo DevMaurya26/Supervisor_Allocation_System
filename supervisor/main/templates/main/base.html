@@ -109,10 +109,11 @@
         <li class="nav-item ">
           <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Login</a>
         </li>
+        {% if user.is_staff %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i>SignUP</a>
         </li>
-
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
         </li>

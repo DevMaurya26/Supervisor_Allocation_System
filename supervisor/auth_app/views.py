@@ -4,9 +4,10 @@ from .form import UserRegisterForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .middelwear import alreadyLogedIn # Custom Middelwear made by me(Dev)
+from main.middelware import is_admin
 # Create your views here.
 
-@alreadyLogedIn
+@is_admin
 def register_view(request):
     '''
     when user want to register so we have to store data in database using Built in UserCreationFrom provided by django..! 
