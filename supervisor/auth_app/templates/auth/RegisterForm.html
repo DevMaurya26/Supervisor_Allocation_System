@@ -8,7 +8,11 @@
     <div class="container">
         <div class="signup-content">
             <form action="{% url 'register' %}" method="POST">
-                <h2>ADD Your Staff.😀</h2>
+                <h2>
+                <div class="three">
+                    <h1>ADD Your Staff.😀</h1>
+                </div>
+                </h2>
                 {% csrf_token %}
                 <!-- {{form.last_name}} -->
                 <div class="form-group">
