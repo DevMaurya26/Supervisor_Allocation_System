@@ -8,7 +8,7 @@
     <div class="container">
         <div class="signup-content">
             <form action="{% url 'register' %}" method="POST">
-                <h2>Register</h2>
+                <h2>ADD Your Staff.😀</h2>
                 {% csrf_token %}
                 <!-- {{form.last_name}} -->
                 <div class="form-group">
@@ -61,7 +61,7 @@
                 <figure>
                     <img src="{%static 'imgs/signup.jpg' %}" alt="sign up image" />
                 </figure>
-                <a href="{% url 'login'%}">I'm already a member.</a><br>
+                <!-- <a href="{% url 'login'%}">I'm already a member.</a><br> --> 
             </div>
         </div>
     </div>
