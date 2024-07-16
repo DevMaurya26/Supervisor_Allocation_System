@@ -17,7 +17,7 @@ def register_view(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():  # checking is the form is valid or not?
             user = form.save()
-            login(request, user)  # built in login method
+           # login(request, user)  # built in login method
 
             return redirect('dashboard')
     else: # if form is not valid then return null form..
