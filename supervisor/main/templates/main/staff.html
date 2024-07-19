@@ -1,0 +1,26 @@
+{% extends 'main/base.html'%}
+{% block title %} allocated Blocks {% endblock %}
+{% block content %}
+<table class="table table-striped-columns border-primary table">
+    <tr>
+        <th>No.</th>
+        <th>Name </th>
+        <th>Email </th>
+        <th>Date joined</th>
+        <th>Last Login</th>
+        <th>Remove</th>
+        <th></th>
+    </tr>
+    {% for instance in staff_list %}
+    <tr>
+        {% with idx=forloop.counter %}
+        <td>{{idx}}</td>
+        <td>{{instance.first_name}}</td> <!-- insted of i.2 ->> user.first_name -->
+        <td>{{instance.email}}</td>
+        <td>{{instance.date_joined}}</td>
+        <td>{{instance.last_login}}</td>
+        <td><a href="{% url 'staff_remove' user_id=instance.id %}"><button type="submit" title="wait for admin." class="change-btn" style="background-color: red;">Remove</button></a></td>
+        {% endwith %}
+    </tr>
+    {% endfor %}
+{% endblock %}

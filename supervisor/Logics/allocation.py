@@ -14,7 +14,7 @@ class allocations:
         name_csv = pd.read_csv('./CSVfiles/raw_files/names.csv')
 
         data_block_arr = np.array(date_csv)
-        name_arr = np.array(name_csv).reshape(-1)
+        name_arr = np.array(name_csv)
 
         allocations = dict()
         time_date = dict()
@@ -25,8 +25,8 @@ class allocations:
                 allocatedList = dict()
                 while len(allocatedList) < j:
                     nm = random.choice(name_arr.tolist())
-                    if nm not in allocatedList.keys():
-                        allocatedList[nm] = num
+                    if nm[1] not in allocatedList.keys():
+                        allocatedList[nm[1]] = num
                         num += 1
                     else:
                         continue
@@ -46,7 +46,7 @@ class allocations:
 
 
         with open(f'./CSVfiles/generated_files/{file_name}', 'w') as f:
-                f.write(f'{"Dates"},{"Time"},{"Name"},{"Allocated_Block"}\n')
+                f.write(f'{"Dates"},{"Time"},{"Email"},{"Allocated_Block"}\n')
                 for i in KEYS:
                     for j in allocations[i].keys():
                         f.write(f'{i},{time_date[i]},{j},{allocations[i][j]}\n')
@@ -54,13 +54,13 @@ class allocations:
         # except Exception as e:
         #     print("Error in allocation.py"+str(e))
     
-    def find_allocation_for(first_name,file_name):
+    def find_allocation_for(user_email,file_name):
         if not file_name:
             return True
         path = "./CSVfiles/generated_files/"+str(file_name)
         data = pd.read_csv(f'{path}')
         time.sleep(2)
-        data = data[data['Name'] == first_name]
+        data = data[data['Email'] == user_email]
         data = np.array(data)
         print(data)
         # if not np.any(data):

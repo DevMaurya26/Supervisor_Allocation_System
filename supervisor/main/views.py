@@ -74,7 +74,7 @@ def generated(request):
         return redirect('create')
 
     user_instance = User.objects.get(pk=request.user.id)
-    UserName = request.user.first_name or user_instance.first_name
+    UserName = request.user.email or user_instance.username
     institute_name = user_instance.last_name
 
     try:
@@ -146,3 +146,27 @@ def admin_aprove_reject(request,decision,req_id):
     print(decision,req_id)
     Change_reqs.objects.filter(id=req_id).update(status=decision)
     return redirect('your_change_req') #to render same page 
+
+@is_admin
+def staff(request,institute):
+    staff_list = User.objects.filter(last_name=institute,is_staff=0)
+    # print([name.first_name for name in staff_list])
+    return render(request,'main/staff.html',{'staff_list' : staff_list})
+
+@is_admin
+def remove_staff(request,user_id):
+    try:
+
+        obj = User.objects.get(id = user_id)
+        obj.delete()
+        user_instance = User.objects.get(pk=request.user.id) 
+        return redirect('staff_list',user_instance.last_name)
+    
+    except User.DoesNotExist:
+        print("User is not Exists..!🤔")
+    
+    except Exception as e:
+        print("Error in staff removing >> ",e)
+
+    # return HttpResponse(210)
+ # 210 successfuly removed

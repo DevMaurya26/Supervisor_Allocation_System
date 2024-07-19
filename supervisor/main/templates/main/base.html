@@ -86,7 +86,7 @@
         {% if user.is_authenticated %}
         <li class="nav-item">
           <span class="user_name_log">
-            <b>{{user.username}}</b> | <a class="nav-link" href="{%url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            <b>{{user.first_name}}</b> | <a class="nav-link" href="{%url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
           </span>
         </li>
 
@@ -98,9 +98,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'your_change_req' %}"><i class="far fa-calendar-alt"></i>Change_request</a>
         </li>
+        {% if user.is_staff%}
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+          <a class="nav-link" href="{% url 'staff_list' institute=user.last_name %}"><i class="far fa-chart-bar"></i>Your Staff List</a>
         </li>
+        {% endif %}
         {% if user.is_staff %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-plus"></i>Create/ADD Staff</a>

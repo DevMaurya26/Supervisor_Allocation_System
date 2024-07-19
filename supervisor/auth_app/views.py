@@ -19,7 +19,7 @@ def register_view(request):
             user = form.save()
            # login(request, user)  # built in login method
 
-            return redirect('dashboard')
+            return redirect('staff_list',institute = request.user.last_name)
     else: # if form is not valid then return null form..
         initial_data = {'username':'','password1':'','password2':'','email':'','first_name':''}
         form = UserRegisterForm(initial=initial_data)
