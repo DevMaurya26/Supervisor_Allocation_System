@@ -11,4 +11,8 @@ sqlparse==0.4.4
 whitenoise==6.4.0
 pandas==2.2.2
 numpy==2.0.0
+<<<<<<< HEAD
 python-dotenv==1.0.1
+=======
+python-dotenv==1.0.1
+>>>>>>> 25ab3872cec75e443437b1307d39fce7a2a42aaf
