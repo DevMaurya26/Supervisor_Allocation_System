@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block content%}
+
+<div class="signup">
+
+    <div class="container" style="display: flex;justify-content:center;align-items: center;">
+
+        <form method="POST">
+            <h2>🔐Password Reset</h2>
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{form.email.id_for_label}}">Email@Address:</label>
+                <input type="text" name="{{form.email.name}}" class="form-control" placeholder="your@email.address">
+                <span class="text-danger">{{form.email.errors}}</span>
+            </div>
+            <input type="submit" value="SUBMIT">
+
+        </form>
+    </div>
+</div>
+
+{% endblock%}

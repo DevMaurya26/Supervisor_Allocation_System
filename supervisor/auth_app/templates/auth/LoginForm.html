@@ -25,7 +25,7 @@
                 {% csrf_token %}
                 <!-- {{form.as_p}} -->
                 <div class="form-group">
-                    <label for="{{form.username.id_for_label}}">Username:</label>
+                    <label for="{{form.username.id_for_label}}">Email@Address:</label>
                     <input type="text" name="{{form.username.name}}" class="form-control"
                         value="{{form.username.value}}">
                     <span class="text-danger">{{form.username.errors}}</span>
