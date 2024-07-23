@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
-from pathlib import Path
 import os
 # Load environment variables from the .env file
 load_dotenv()
@@ -27,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ald*(*3yzy_fg1&&nk!h0b9-qw=+++9p9lfx2g-0ux^18yb1h&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['supervisor-allocation-system.onrender.com','*'] 
 
