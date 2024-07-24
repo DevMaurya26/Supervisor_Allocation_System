@@ -10,5 +10,6 @@ urlpatterns = [
     path('your_change_req',views.user_change_req,name='your_change_req'),
     path('admin_decision/<int:decision>/<req_id>',views.admin_aprove_reject,name='admin_decision'),
     path('staff_list/<str:institute>',views.staff,name='staff_list'),
-    path('staff_remove/<user_id>',views.remove_staff,name='staff_remove')
+    path('staff_remove/<user_id>',views.remove_staff,name='staff_remove'),
+    path('contact-us',views.contact,name='contact-pg')
 ]

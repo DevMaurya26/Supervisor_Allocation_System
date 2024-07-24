@@ -31,45 +31,6 @@
 </head>
 
 <body>
-  <!-- <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-            <div class="bg-dark p-4">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Active</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                  </ul>
-            </div>
-          </div>
-          <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </div>
-          </nav> -->
-  <!-- <ul class="nav justify-content-center">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'list' %}">Allocated</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'create' %}">Create</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul> -->
   <nav class="navbar navbar-expand-custom navbar-mainbg">
     <a class="navbar-brand navbar-logo" href="/">EOOL</a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -82,11 +43,10 @@
           <div class="left"></div>
           <div class="right"></div>
         </div>
-
         {% if user.is_authenticated %}
         <li class="nav-item">
           <span class="user_name_log">
-            <b>{{user.first_name}}</b> | <a class="nav-link" href="{%url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            <b>{{user.first_name}}</b>&nbsp;&nbsp; | <a class="nav-link" href="{%url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
           </span>
         </li>
 

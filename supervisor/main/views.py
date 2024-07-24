@@ -13,6 +13,8 @@ final_file_name = ''
 def index(request):
     return render(request, 'main/index.html')
 
+def contact(request):
+    return render(request,'main/contact.html')
 @is_admin
 def create(request):
     flag1 = False
