@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'supervisor.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "supervisor_x9t6",
-        "USER": "root",
+        "NAME": os.environ.get('DB_NAME'),
+        "USER": os.environ.get('USER'),
         "PASSWORD": os.environ.get('DB_PASSWORD'),
-        "HOST": "dpg-cqfumd5ds78s73c64u60-a.oregon-postgres.render.com",
-        "PORT": "5432",
+        "HOST": os.environ.get('HOST_NAME')+".oregon-postgres.render.com",
+        "PORT": os.environ.get('PORT'),
     }
 
     #     'default': {
