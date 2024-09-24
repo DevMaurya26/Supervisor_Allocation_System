@@ -97,7 +97,7 @@ DATABASES = {
         "USER": os.environ.get('USER'),
         "PASSWORD": os.environ.get('DB_PASSWORD'),
         "HOST": os.environ.get('HOST_NAME')+".oregon-postgres.render.com",
-        "PORT": os.environ.get('PORT'),
+        "PORT": 5432,
     }
 
     #     'default': {
