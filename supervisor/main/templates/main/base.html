@@ -44,42 +44,53 @@
           <div class="right"></div>
         </div>
         {% if user.is_authenticated %}
-        <li class="nav-item">
-          <span class="user_name_log">
-            <b>{{user.first_name}}</b>&nbsp;&nbsp; | <a class="nav-link" href="{%url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-          </span>
-        </li>
+            <li class="nav-item">
+              <span class="user_name_log">
+                <b>{{user.first_name}}</b>&nbsp;&nbsp; | <a class="nav-link" href="{%url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+              </span>
+            </li>
 
-        <li class="nav-item ">
-          <a class="nav-link" href="{% url 'list' %}"><i class="fas fa-tachometer-alt"></i>Allocated</a>
+            {% if not user.is_staff%}
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'list' %}"><i class="fas fa-tachometer-alt"></i>Allocated</a>
 
-        </li>
+              </li>
+            {% else %}
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'create' %}"><i class="fas fa-tachometer-alt"></i>Allocate</a>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'your_change_req' %}"><i class="far fa-calendar-alt"></i>Change_request</a>
-        </li>
-        {% if user.is_staff%}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'staff_list' institute=user.last_name %}"><i class="far fa-chart-bar"></i>Your Staff List</a>
-        </li>
-        {% endif %}
-        {% if user.is_staff %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-plus"></i>Create/ADD Staff</a>
-        </li>
-        {% endif %}
-        <li class="nav-item active ">
-          <a class="nav-link" href="{% url 'create' %}"><i class="far fa-address-book"></i>Dashboard</a>
+              </li>
+            {% endif %} 
 
-        </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'your_change_req' %}"><i class="far fa-calendar-alt"></i>Change_request</a>
+            </li>
+
+              {% if user.is_staff%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'staff_list' institute=user.last_name %}"><i class="far fa-chart-bar"></i>Your Staff List</a>
+                  </li>
+              {% endif %}
+
+              {% if user.is_staff %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-plus"></i>Create/ADD Staff</a>
+                  </li>
+              {% endif %}
+
+            <li class="nav-item active ">
+              <a class="nav-link" href="{% url 'dashboard' %}"><i class="far fa-address-book"></i>Dashboard</a>
+
+            </li>
+            
         {% else %}
-        <li class="nav-item ">
-          <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Login</a>
-        </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Login</a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/user-attachments/files/16116561/User.Manual.docx"><i class="far fa-copy"></i>Documents</a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/user-attachments/files/16116561/User.Manual.docx"><i class="far fa-copy"></i>Documents</a>
+            </li>
         {% endif %}
       </ul>
     </div>
