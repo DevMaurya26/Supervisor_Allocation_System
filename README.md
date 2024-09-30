@@ -1,7 +1,8 @@
 # Supervisor_Allocation_System
 
 # Home page
-![127 0 0 1_8000_](https://github.com/DevvMaurya/Supervisor_Allocation_System/assets/105772302/7e3842b7-6bef-4652-a139-b3668b3142b5)
+![{1E16FD44-F3B6-4947-8D91-8B96F1F783A1}](https://github.com/user-attachments/assets/ec02e591-e320-4c38-9451-172542c865ec)
+
 
 # Login and Signup
 ![image](https://github.com/DevvMaurya/Supervisor_Allocation_System/assets/105772302/277f076a-8371-4580-823a-cf3a2073a0bc)
